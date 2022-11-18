@@ -18,14 +18,26 @@ public class  Board
     solvedPhrase = "";
     phrase = loadPhrase();
     setLetterValue();
-    System.out.println("Phrase: " + phrase); //temp test code
   }
   /* your code here - accessor(s) */
   
+  public String getSolvedPhrase(){
+    return solvedPhrase;
+  }
+
+  public String getPhrase(){
+    return phrase;
+  }
+
+
   /* your code here - mutator(s)  */
 
+  public int getLetterValue(){
+    return currentLetterValue;
+  }
 
   /* ---------- provided code, do not modify ---------- */
+
   public void setLetterValue()
   {
     int randomInt = (int) ((Math.random() * 10) + 1) * 100;    
@@ -40,6 +52,8 @@ public class  Board
     }
     return false;
   }
+
+
 
   private String loadPhrase()
   {
@@ -88,6 +102,8 @@ public class  Board
     return tempPhrase;
   }  
 
+
+  
   /*
    * stores the partially solved phrase based on the user's guess
    * precondition: 
