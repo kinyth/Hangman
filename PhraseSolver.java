@@ -13,71 +13,85 @@ public class PhraseSolver
   private Board game;
   private boolean solved;
 
+
   /* your code here - constructor(s) */ 
-  public PhraseSolver()
-  {
-    player1 = new Player();
-    player2 = new Player();
-    game = new Board();
-    solved = false;
-  }
-  /* your code here - accessor(s) */
-  
-  /* your code here - mutator(s)  */
+public PhraseSolver()
+{
+  player1 = new Player();
+  player2 = new Player();
+  game = new Board();
+  solved = false;
+}
 
   public void play()
   {
-    
-    Player currentPlayer = player1;
-
+    boolean solved = false;
+    int currentPlayer = 1;
+    Scanner sc = new Scanner(System.in);
+    String answer;
     Scanner input = new Scanner(System.in);
-    System.out.println("Enter your guess: ");
-    String sc = input.nextLine();
-
+    
     boolean correct = true;
     while (!solved) 
     {
-      
-      /* your code here - game logic */
+        correct = true;
+    //set the current player to Player 1
+      if (currentPlayer == 1){
+        currentPlayer = 2;
+        System.out.println(player2.getName() + " it is your turn.");
+     }
+      else {
+        currentPlayer =1;
+        System.out.println(player1.getName() + " it is your turn.");
+
+     }
 
 
-      if(game.isSolved(sc)){
-        solved = true;
-      }
+    //asks player for a guess
 
-      else{
-        currentPlayer = player2;
-      }
-      
-      /* your code here - determine how game ends */
-      solved = true; 
+      while(correct == true){
+        game.setLetterValue();
+        System.out.println(game.getSolvedPhrase());
+        /* This takes the user input of the player*/
+        System.out.println("Please enter a letter to guess: ");
+        answer = sc.nextLine();
+          if(game.guessLetter(answer) == true)
+          {
+            System.out.println(" ");
+            System.out.println("Good job that letter is in the phrase!");
+          }
+          else if(answer.equals(game.getPhrase()))
+          {
+            solved = true;
+            correct = false;
+            System.out.println("You guessed the right phrase, congrats!!! The game is now over.");
+          }
+          else
+          {
+            correct = false;
+            //if player one fails to guess a letter, player twos turn will come
+            System.out.println("This guess was wrong. It's the player two's turn");
+          }
+          if (game.getSolvedPhrase().indexOf("_") == -1)
+          {
+            solved = true;
+            break;
+          }
+
+          
+        }
+
     } 
-
-    input = new Scanner(System.in);
-    System.out.println("Enter your guess: ");
-    sc = input.nextLine();
-
-    correct = true;
-    while (!solved) 
+    //Shows what player wins
+    if (player1.getPoints() > player2.getPoints())
     {
-      
-      /* your code here - game logic */
-
-
-      if(game.isSolved(sc)){
-        solved = true;
-      }
-
-      else{
-        correct = false;
-        currentPlayer = player2;
-      }
-      
-      /* your code here - determine how game ends */
-      solved = true; 
-      
-    } 
-   
+      System.out.println("Player 1 has guessed the word correctly");
+    }
+    else
+    {
+      System.out.println("Player 2 has guessed the word correctly");
+    }
   }
+
   
 }

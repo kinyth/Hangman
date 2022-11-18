@@ -7,45 +7,40 @@ import java.util.Scanner;
 
 public class Player
 {
-
   /* your code here - attributes */
   private String name;
   private int points;
 
-
   /* your code here - constructor(s) */ 
-public Player()
-{
-  Scanner sc = new Scanner(System.in);
-  System.out.println("Enter your name: ");
-  String newName = sc.nextLine();
-
-  name = newName;
-  System.out.println("Welcome, " + name + ", to the game!");
-  points = 0;
-
-}
-
-public Player(String inputName)
-{
-  name = inputName;
-  System.out.println("Welcome, " + name + ", to the game!");
-  points = 0;
+  public Player() {
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Please enter your name: ");
+    name = sc.nextLine();
+    System.out.println(name + " , welcome!");
+    points = 0;
+  }
+  public Player (String inputName){
+    name = inputName;
+    System.out.println(name + " , welcome!");
+    points = 0;
+ }
+  /* your code here - accessor(s) */
   
-}
-  /* your code here - accessor(s) */ 
-public String getName(){
-  return name;
-}
+  public String getName(){
+    return name;
+  }
 
-public int getPoints(){
-  return points;
-}
+  public int getPoints(){
+    return points;
+  }
+
   /* your code here - mutator(s) */ 
+  public void setName (String inputName){
+    name = inputName;
+  }
 
-public void setPoints(int x){
-  points = x;
-}
-
-
+  public void addToPoints (int value){
+    points += value;
+     
+  }
 }
