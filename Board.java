@@ -38,10 +38,11 @@ public class  Board
 
   /* ---------- provided code, do not modify ---------- */
 
-  public void setLetterValue()
+  public int setLetterValue()
   {
     int randomInt = (int) ((Math.random() * 10) + 1) * 100;    
     currentLetterValue = randomInt;
+    return currentLetterValue;
   }
 
   public boolean isSolved(String guess)

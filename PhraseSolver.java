@@ -39,10 +39,14 @@ public PhraseSolver()
       if (currentPlayer == 1){
         currentPlayer = 2;
         System.out.println(player2.getName() + " it is your turn.");
+        player2.addToPoints(game.setLetterValue());
+        System.out.println("Points: " + player1.getPoints());
      }
       else {
         currentPlayer =1;
         System.out.println(player1.getName() + " it is your turn.");
+        player2.addToPoints(game.setLetterValue());
+        System.out.println("Points: " + player2.getPoints());
 
      }
 
@@ -85,11 +89,11 @@ public PhraseSolver()
     //Shows what player wins
     if (player1.getPoints() > player2.getPoints())
     {
-      System.out.println("Player 1 has guessed the word correctly");
+      System.out.println(player1.getName() +"has guessed the word correctly");
     }
     else
     {
-      System.out.println("Player 2 has guessed the word correctly");
+      System.out.println(player2.getName()+"has guessed the word correctly");
     }
   }
 
